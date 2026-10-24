@@ -1,0 +1,201 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript Assignment #5</title>
+    <link rel="stylesheet" href="styles.css">
+
+    <script src="js/task1.js" defer></script>
+    <script src="js/task2.js" defer></script>
+    <script src="js/task3.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <h1>JavaScript Basics</h1>
+        <p>DOM Manipulation & Events</p>
+        <nav aria-label="Assignment sections">
+            <a href="#task1">Game</a>
+            <a href="#task2">Task Board</a>
+            <a href="#task3">Ticket Builder</a>
+        </nav>
+    </header>
+
+    <main>
+        <!-- TASK 1 -->
+        <section id="task1" class="panel">
+            <p class="eyebrow">TASK 01</p>
+            <h2>Higher or Lower</h2>
+            <p>Predict whether the next number will be higher or lower.</p>
+
+            <div class="game-number">
+                <span>Current number</span>
+                <strong id="current-number">50</strong>
+            </div>
+
+            <div class="button-row">
+                <button id="higher-btn" type="button">Higher ↑</button>
+                <button id="lower-btn" type="button">Lower ↓</button>
+            </div>
+
+            <p id="game-message" class="message" aria-live="polite">
+                Choose Higher or Lower to start.
+            </p>
+
+            <div class="stats">
+                <p>Lives: <strong id="lives">3</strong></p>
+                <p>Current streak: <strong id="streak">0</strong></p>
+                <p>Best streak: <strong id="best-streak">0</strong></p>
+            </div>
+
+            <button id="restart-game" class="secondary" type="button">
+                Restart Game
+            </button>
+        </section>
+
+        <!-- TASK 2 -->
+        <section id="task2" class="panel">
+            <p class="eyebrow">TASK 02</p>
+            <h2>Kanban Task Board</h2>
+            <p>Organize tasks and track your progress.</p>
+
+            <div class="toolbar">
+                <label>
+                    Search tasks
+                    <input id="task-search" type="search"
+                           placeholder="Search by title...">
+                </label>
+
+                <label>
+                    Filter by tag
+                    <select id="tag-filter">
+                        <option value="all">All tags</option>
+                        <option value="Design">Design</option>
+                        <option value="Development">Development</option>
+                        <option value="Testing">Testing</option>
+                    </select>
+                </label>
+
+                <label>
+                    Sort by priority
+                    <select id="priority-sort">
+                        <option value="default">Default order</option>
+                        <option value="high">High to Low</option>
+                    </select>
+                </label>
+            </div>
+
+            <div class="progress-track"
+                 role="progressbar"
+                 aria-label="Completed tasks"
+                 aria-valuemin="0"
+                 aria-valuemax="100"
+                 aria-valuenow="0"
+                 id="progress-track">
+                <div id="progress-bar" class="progress-bar"></div>
+            </div>
+            <p id="progress-text" aria-live="polite">0 of 10 tasks completed (0%).</p>
+
+            <p id="board-message" class="message" aria-live="polite"></p>
+
+            <!-- JavaScript creates the task cards here. -->
+            <div id="task-board" class="kanban-board"></div>
+        </section>
+
+        <!-- TASK 3 -->
+        <section id="task3" class="panel">
+            <p class="eyebrow">TASK 03</p>
+            <h2>Event Ticket Builder</h2>
+            <p>Complete the form to create your event ticket.</p>
+
+            <div class="ticket-layout">
+                <form id="ticket-form" novalidate>
+                    <div class="field">
+                        <label for="full-name">Full name</label>
+                        <input id="full-name" name="fullName"
+                               type="text" autocomplete="name"
+                               required minlength="3">
+                        <small class="field-error" id="name-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="email">Email address</label>
+                        <input id="email" name="email" type="email"
+                               autocomplete="email" required>
+                        <small class="field-error" id="email-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="event">Event</label>
+                        <select id="event" name="event" required>
+                            <option value="">Choose an event</option>
+                            <option value="AI Summit">AI Summit</option>
+                            <option value="Web Design Day">Web Design Day</option>
+                            <option value="Code Fest">Code Fest</option>
+                        </select>
+                        <small class="field-error" id="event-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="event-date">Event date</label>
+                        <select id="event-date" name="eventDate" required>
+                            <option value="">Choose a date</option>
+                            <option value="2026-11-10">November 10, 2026</option>
+                            <option value="2026-11-15">November 15, 2026</option>
+                            <option value="2026-11-20">November 20, 2026</option>
+                        </select>
+                        <small class="field-error" id="date-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="ticket-type">Ticket type</label>
+                        <select id="ticket-type" name="ticketType" required>
+                            <option value="">Choose a ticket</option>
+                            <option value="Standard">Standard — $30</option>
+                            <option value="VIP">VIP — $60</option>
+                        </select>
+                        <small class="field-error" id="type-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="quantity">Quantity</label>
+                        <input id="quantity" name="quantity" type="number"
+                               min="1" max="6" step="1" value="1" required>
+                        <small class="field-error" id="quantity-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="promo-code">Promo code (optional)</label>
+                        <input id="promo-code" name="promoCode"
+                               type="text" placeholder="Try SAVE10">
+                        <small class="field-error" id="promo-error"></small>
+                    </div>
+
+                    <p id="form-summary" class="message" aria-live="polite"></p>
+
+                    <button type="submit">Create My Ticket</button>
+                </form>
+
+                <aside class="ticket-preview" aria-labelledby="preview-title">
+                    <h3 id="preview-title">Live Preview</h3>
+                    <p id="preview-name">Your name</p>
+                    <p id="preview-event">Your event</p>
+                    <p id="preview-date">Your date</p>
+                    <p id="preview-type">Your ticket type</p>
+                    <p id="preview-quantity">Quantity: 1</p>
+                    <p id="preview-total">Estimated total: $30.00</p>
+                    <p id="preview-promo">No promo code applied</p>
+                </aside>
+            </div>
+
+            <div id="ticket-result" class="ticket-result"
+                 aria-live="polite" tabindex="-1"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>JavaScript Basics · Assignment #5</p>
+    </footer>
+</body>
+</html>
